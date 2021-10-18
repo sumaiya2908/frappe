@@ -80,7 +80,7 @@ def check_password(user, pwd, doctype='User', fieldname='password', delete_track
 
 	if not auth or not passlibctx.verify(pwd, auth[0].password):
 		if reset_password:
-			raise frappe.ValidationError(_('Incorrect User'))
+			raise frappe.ValidationError(_('Incorrect Password'))
 		else:
 			raise frappe.AuthenticationError(_('Incorrect User or Password'))
 
