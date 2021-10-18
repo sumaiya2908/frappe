@@ -438,6 +438,7 @@ def clear_user_permissions_for_doctype(doctype, user=None):
 		frappe.delete_doc('User Permission', d.name)
 
 def can_import(doctype, raise_exception=False):
+	print(doctype + "hrllo")
 	if not ("System Manager" in frappe.get_roles() or has_permission(doctype, "import")):
 		if raise_exception:
 			raise frappe.PermissionError("You are not allowed to import: {doctype}".format(doctype=doctype))

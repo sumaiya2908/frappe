@@ -319,7 +319,7 @@ $.extend(frappe.model, {
 	can_import: function(doctype, frm) {
 		// system manager can always import
 		if(frappe.user_roles.includes("System Manager")) return true;
-
+		console.log(doctype)
 		if(frm) return frm.perm[0].import===1;
 		return frappe.boot.user.can_import.indexOf(doctype)!==-1;
 	},

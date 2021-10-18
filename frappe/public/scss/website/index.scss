@@ -16,6 +16,7 @@
 @import 'website_image';
 @import 'website_avatar';
 @import 'web_form';
+@import 'my_account';
 @import 'page_builder';
 @import 'blog';
 @import 'markdown';
@@ -25,6 +26,7 @@
 @import 'doc';
 @import 'navbar';
 @import 'footer';
+
 
 .ql-editor.read-mode {
 	padding: 0;
@@ -191,8 +193,8 @@ h5.modal-title {
 }
 
 .hidden-xs {
+	@extend .d-sm-inline;
 	@extend .d-none;
-	@extend .d-sm-block;
 }
 
 .visible-xs {
@@ -214,7 +216,9 @@ h5.modal-title {
 .pull-right {
 	float: right;
 }
-
+.pull-left {
+	float: left;
+}
 .image-with-blur {
 	transition: filter 300ms ease-in-out;
 	filter: blur(1.5rem);

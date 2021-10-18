@@ -1,0 +1,61 @@
+{% from "frappe/templates/includes/avatar_macro.html" import avatar %}
+{% extends "templates/web.html" %}
+{% block title %}
+{{_(user_account['full_name']) }}
+{% endblock %}
+
+{% block page_content %}
+<div class="row your-account-info d-flex flex-column">
+	<div class="col d-flex justify-content-between border-0 align-items-center">
+		<div>
+			<span class="my-account-avatar">{{avatar(user)}}</span>
+			<span class="btn btn-primary btn-sm ml-4 edit-profile-btn">Upload new Image</span>
+			<span class="btn btn-light btn-sm ml-2 edit-profile-btn">Remove</span>
+		</div>
+	</div>
+	<form id="edit-profile" class="col d-flex flex-column">
+		<div class="row d-flex" style="margin-left: 0px">
+			<div class="form-group">
+				<label>First Name</label>
+				<input id="first_name" type="text" class="form-control"
+				{% if user_account['first_name'] %}  value={{user_account["first_name"]}} {% endif %} >
+			</div>
+			<div class="form-group">
+				<label>Middle Name (optional)</label>
+				<input id="middle_name" type="text" class="form-control"
+				{% if user_account['middle_name'] %} value={{user_account["middle_name"]}} {% endif %}>
+			</div>
+			<div class="form-group">
+				<label>Last Name</label>
+				<input id="last_name" type="text" class="form-control"
+				{% if user_account['last_name'] %} value={{user_account["last_name"]}} {% endif %}>
+			</div>
+		</div>
+		<div class="row d-flex " style="margin-left: 0px">
+			<div class="form-group">
+				<label>Phone</label>
+				<input id="phone" type="text" class="form-control"
+				{% if user_account['phone'] %} value={{user_account["phone"]}} {% endif %}>
+			</div>
+			<div class="form-group">
+				<label>Mobile Number</label>
+				<input id="mobile_number" type="select" class="form-control"
+					{% if user_account['mobile_no'] %} value={{user_account["mobile_no"]}} {% endif %}>
+			</div>
+			<div class="form-group">
+				<label>Language</label>
+					<select id="languaue" class="form-control" name="languages">
+						{% for language in languages %}
+							<option value={{language}} 
+								{% if user_account['language'] == language %}	selected = "selected" {% endif %}>
+								{{language}}
+							</option>
+						{% endfor %}
+					  </select>
+			</div>
+		</div>
+
+
+	</form>
+</div>
+{% endblock %}

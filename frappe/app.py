@@ -226,7 +226,7 @@ def handle_exception(e):
 		and (frappe.db and (frappe.db.is_deadlocked(e) or frappe.db.is_timedout(e)))):
 			http_status_code = 508
 
-	elif http_status_code==401:
+	elif http_status_code==401 and e.__class__ == frappe.SessionExpired :
 		frappe.respond_as_web_page(_("Session Expired"),
 			_("Your session has expired, please login again to continue."),
 			http_status_code=http_status_code,  indicator_color='red')

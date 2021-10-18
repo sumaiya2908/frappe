@@ -638,7 +638,7 @@ def update_password(new_password, logout_all_sessions=0, key=None, old_password=
 		user = res['user']
 
 	logout_all_sessions = cint(logout_all_sessions) or frappe.db.get_single_value("System Settings", "logout_on_password_reset")
-	_update_password(user, new_password, logout_all_sessions=cint(logout_all_sessions))
+	_update_password(user, new_password, logout_all_sessions=False)
 
 	user_doc, redirect_url = reset_user_data(user)
 

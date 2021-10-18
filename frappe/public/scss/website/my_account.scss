@@ -1,0 +1,70 @@
+
+$blue-500: #2D95F0;
+body {
+	background-color: var(--bg-light-gray);
+}
+
+.my-account-header {
+	color: var(--gray-900)
+}
+.your-account-info {
+	background-color: #fff;
+	border-radius: var(--border-radius-md);
+	padding: var(--padding-sm) var(--padding-lg);
+	// width: 900px;
+
+	.my-account-name {
+		color: var(--gray-900);
+		font-weight: var(--text-bold);
+	}
+	
+	.my-account-item {
+		color: var(--gray-900);
+		font-weight: var(--text-bold);
+		
+	}
+	.my-account-avatar{
+		.avatar {
+			height: 60px;
+		width: 60px;
+		}
+		
+	}
+	label {
+		color: var(--gray-700);
+		font-size: 12px;
+	}
+		.form-control {
+			font-size: 13px;
+			padding: 4px 12px;
+			height: 28px;
+			width: 270px;
+		}
+	
+	.edit-profile-btn {
+		font-size: 13px;
+	}
+	.my-account-item-desc {
+		color: var(--gray-700);
+		font-size: 13px;
+	}
+	.my-account-item-link {
+		font-size: 13px;
+		color: $blue-500 !important;
+
+		
+	}
+	.col {
+		padding: var(--padding-md) 0;
+		border-bottom: 1px solid var(--gray-100);
+		
+		.form-group {
+			margin-right: var(--margin-lg);
+		}
+	}
+	:last-child {
+		border: 0;
+	}
+	
+
+}
