@@ -71,7 +71,7 @@ def remove_encrypted_password(doctype, name, fieldname='password'):
 		"fieldname": fieldname
 	})
 
-def check_password(user, pwd, doctype='User', fieldname='password', delete_tracker_cache=True):
+def check_password(user, pwd, doctype='User', fieldname='password', delete_tracker_cache=True, reset_password = False):
 	'''Checks if user and password are correct, else raises frappe.AuthenticationError'''
 
 	auth = frappe.db.sql("""select `name`, `password` from `__Auth`
@@ -79,7 +79,10 @@ def check_password(user, pwd, doctype='User', fieldname='password', delete_track
 		{'doctype': doctype, 'name': user, 'fieldname': fieldname}, as_dict=True)
 
 	if not auth or not passlibctx.verify(pwd, auth[0].password):
-		raise frappe.AuthenticationError(_('Incorrect User or Password'))
+		if reset_password:
+			raise frappe.ValidationError(_('Incorrect User'))
+		else:
+			raise frappe.AuthenticationError(_('Incorrect User or Password'))
 
 	# lettercase agnostic
 	user = auth[0].name
@@ -100,7 +103,7 @@ def delete_login_failed_cache(user):
 	frappe.cache().hdel('login_failed_count', user)
 	frappe.cache().hdel('locked_account_time', user)
 
-def update_password(user, pwd, doctype='User', fieldname='password', logout_all_sessions=False):
+def update_password(user, pwd, doctype='User', fieldname='password', logout_all_sessions=False, reset_password=False):
 	'''
 		Update the password for the User
 
