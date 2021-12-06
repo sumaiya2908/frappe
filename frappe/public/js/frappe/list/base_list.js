@@ -710,7 +710,13 @@ class FilterArea {
 				label: "Name",
 				condition: "like",
 				fieldname: "name",
-				onchange: () => this.refresh_list_view(),
+				onchange: (e) => {
+						if (e) {
+							if (e.target.value.length > 0 && e.target.value.trim() == "" ) return;	
+						}
+						this.refresh_list_view()
+				},
+				
 			},
 		];
 
