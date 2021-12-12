@@ -94,7 +94,7 @@ def validate_name(name, throw=False):
 		return False
 
 	name = name.strip()
-	match = re.match(r"^[\w][\w\'\-]*([ \w][\w\'\-]+)*$", name)
+	match = re.match(r"^[\w][\w\'\-]*( \w[\w\'\-]*)*$", name)
 
 	if not match and throw:
 		frappe.throw(frappe._("{0} is not a valid Name").format(name), frappe.InvalidNameError)
@@ -240,7 +240,9 @@ def get_traceback() -> str:
 		return ""
 
 	trace_list = traceback.format_exception(exc_type, exc_value, exc_tb)
-	return "".join(cstr(t) for t in trace_list)
+	bench_path = get_bench_path() + "/"
+
+	return "".join(cstr(t) for t in trace_list).replace(bench_path, "")
 
 def log(event, details):
 	frappe.logger().info(details)
