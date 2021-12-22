@@ -1,10 +1,11 @@
+//styles for my account and edit-profile page
 @include media-breakpoint-up(sm) {
     body[data-path="me"] {
         background-color: var(--bg-gray);
     }
 }
 
-@include media-breakpoint-down(567px) {
+@include media-breakpoint-down(sm) {
     #page-me {
         .side-list {
             .list-group {
@@ -17,9 +18,10 @@
 .my-account-header {
     color: var(--gray-900);
     margin-bottom: var(--margin-lg);
+    font-weight: bold;
 
     @include media-breakpoint-down(sm) {
-        margin-left: -16px;
+        margin-left: -1rem;
     }
 }
 
@@ -53,11 +55,11 @@
 
     .my-account-item-desc {
         color: var(--gray-700);
-        font-size: 13px;
+        font-size: var(--font-size-sm);
     }
 
     .my-account-item-link {
-        font-size: 13px;
+        font-size: var(--font-size-sm);
 
         a {
             text-decoration: none;
@@ -82,7 +84,7 @@
 
     .col {
         padding: var(--padding-md) 0;
-        border-bottom: 1px solid var(--gray-100);
+        border-bottom: 1px solid var(--border-color);
 
         .form-group {
             margin-right: var(--margin-lg);
@@ -91,5 +93,24 @@
 
     :last-child {
         border: 0;
+    }
+}
+
+//styles for third party apps page
+//center wrt to outer most container and not immediate parent
+.empty-apps-state {
+	position: relative;
+	padding-top: 18rem;
+	margin-left: -250px;
+	margin-top: -150px;
+	text-align: center;
+
+	@include media-breakpoint-down(sm) {
+		margin: auto;
+		padding-top: 5rem;
+	}	
+    
+    @include media-breakpoint-down(md) {
+        margin-left: 0;
     }
 }
