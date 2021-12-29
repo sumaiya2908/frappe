@@ -2,6 +2,10 @@
 
 body {
 	background-color: var(--bg-light-gray);
+
+	@include media-breakpoint-down(sm) {
+		background-color: var(--fg-color);
+	}
 }
 
 .for-forgot,
